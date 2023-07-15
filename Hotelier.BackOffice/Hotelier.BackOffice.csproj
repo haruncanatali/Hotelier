@@ -6,4 +6,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <TypeScriptCompile Include="wwwroot\vendors\tinymce\tinymce.d.ts" />
+    </ItemGroup>
+
 </Project>
