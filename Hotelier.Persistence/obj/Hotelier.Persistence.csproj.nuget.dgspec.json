@@ -1,0 +1,249 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/haruncanatali/Desktop/Projects/Hotelier/Hotelier.Persistence/Hotelier.Persistence.csproj": {}
+  },
+  "projects": {
+    "/Users/haruncanatali/Desktop/Projects/Hotelier/Hotelier.Application/Hotelier.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/haruncanatali/Desktop/Projects/Hotelier/Hotelier.Application/Hotelier.Application.csproj",
+        "projectName": "Hotelier.Application",
+        "projectPath": "/Users/haruncanatali/Desktop/Projects/Hotelier/Hotelier.Application/Hotelier.Application.csproj",
+        "packagesPath": "/Users/haruncanatali/.nuget/packages/",
+        "outputPath": "/Users/haruncanatali/Desktop/Projects/Hotelier/Hotelier.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/haruncanatali/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/haruncanatali/Desktop/Projects/Hotelier/Hotelier.Domain/Hotelier.Domain.csproj": {
+                "projectPath": "/Users/haruncanatali/Desktop/Projects/Hotelier/Hotelier.Domain/Hotelier.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.5.2, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[10.0.1, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.9, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.32.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.305/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/haruncanatali/Desktop/Projects/Hotelier/Hotelier.Domain/Hotelier.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/haruncanatali/Desktop/Projects/Hotelier/Hotelier.Domain/Hotelier.Domain.csproj",
+        "projectName": "Hotelier.Domain",
+        "projectPath": "/Users/haruncanatali/Desktop/Projects/Hotelier/Hotelier.Domain/Hotelier.Domain.csproj",
+        "packagesPath": "/Users/haruncanatali/.nuget/packages/",
+        "outputPath": "/Users/haruncanatali/Desktop/Projects/Hotelier/Hotelier.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/haruncanatali/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.305/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/haruncanatali/Desktop/Projects/Hotelier/Hotelier.Persistence/Hotelier.Persistence.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/haruncanatali/Desktop/Projects/Hotelier/Hotelier.Persistence/Hotelier.Persistence.csproj",
+        "projectName": "Hotelier.Persistence",
+        "projectPath": "/Users/haruncanatali/Desktop/Projects/Hotelier/Hotelier.Persistence/Hotelier.Persistence.csproj",
+        "packagesPath": "/Users/haruncanatali/.nuget/packages/",
+        "outputPath": "/Users/haruncanatali/Desktop/Projects/Hotelier/Hotelier.Persistence/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/haruncanatali/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/haruncanatali/Desktop/Projects/Hotelier/Hotelier.Application/Hotelier.Application.csproj": {
+                "projectPath": "/Users/haruncanatali/Desktop/Projects/Hotelier/Hotelier.Application/Hotelier.Application.csproj"
+              },
+              "/Users/haruncanatali/Desktop/Projects/Hotelier/Hotelier.Domain/Hotelier.Domain.csproj": {
+                "projectPath": "/Users/haruncanatali/Desktop/Projects/Hotelier/Hotelier.Domain/Hotelier.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Hosting.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.305/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
