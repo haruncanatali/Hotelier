@@ -6,6 +6,7 @@ namespace Hotelier.Application.Subscribes.Queries.Dtos;
 
 public class SubscribeDto : IMapFrom<Subscribe>
 {
+    public long Id { get; set; }
     public string Mail { get; set; }
     public DateTime CreatedAt { get; set; }
 

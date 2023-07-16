@@ -28,4 +28,8 @@
       <ProjectReference Include="..\Hotelier.Persistence\Hotelier.Persistence.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="wwwroot\Images\UserProfilePhotos\" />
+    </ItemGroup>
+
 </Project>

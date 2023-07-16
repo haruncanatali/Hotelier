@@ -15,6 +15,7 @@ public class CreateUserCommand : IRequest<UserDto>
     public string LastName { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
+    public string Address { get; set; }
     public DateTime Birthdate { get; set; }
     public IFormFile ProfilePhoto { get; set; }
     public string RoleName { get; set; }
@@ -60,6 +61,7 @@ public class CreateUserCommand : IRequest<UserDto>
                 LastName = request.LastName,
                 UserName = request.Email,
                 Email = request.Email,
+                Address = request.Address,
                 ProfilePhoto = profilePhoto,
                 Birthdate = request.Birthdate,
                 RefreshToken = String.Empty,
