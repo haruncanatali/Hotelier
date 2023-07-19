@@ -10,4 +10,13 @@
       <TypeScriptCompile Include="wwwroot\vendors\tinymce\tinymce.d.ts" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="7.0.9" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Hotelier.Application\Hotelier.Application.csproj" />
+    </ItemGroup>
+
 </Project>

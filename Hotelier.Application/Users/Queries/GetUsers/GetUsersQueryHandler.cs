@@ -1,3 +1,4 @@
+using System.Globalization;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Hotelier.Application.Users.Queries.Dtos;
@@ -8,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hotelier.Application.Users.Queries.GetUsers;
 
-public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery,List<UserDto>>
+public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery,GetUsersVm>
 {
     private readonly UserManager<User> _userManager;
     private readonly IMapper _mapper;
@@ -19,8 +20,12 @@ public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery,List<UserDto>>
         _mapper = mapper;
     }
 
-    public async Task<List<UserDto>> Handle(GetUsersQuery request, CancellationToken cancellationToken)
+    public async Task<GetUsersVm> Handle(GetUsersQuery request, CancellationToken cancellationToken)
     {
+        int count = _userManager.Users.Count();
+
+        double pageCount = Math.Ceiling((double)count / (double)request.PageSize);
+        
         List<UserDto>? result = await _userManager.Users
             .Where(c =>
                 (request.FirstName == null || c.FirstName.ToLower().Contains(request.FirstName.ToLower())) &&
@@ -33,6 +38,13 @@ public class GetUsersQueryHandler : IRequestHandler<GetUsersQuery,List<UserDto>>
             .Take(request.PageSize)
             .ToListAsync(cancellationToken);
 
-        return result;
+        return new GetUsersVm
+        {
+            Users = result,
+            CurrentPage = request.Page,
+            Next = request.Page < pageCount,
+            Previous = request.Page>1,
+            PageCount = int.Parse(pageCount.ToString(CultureInfo.InvariantCulture))
+        };
     }
 }

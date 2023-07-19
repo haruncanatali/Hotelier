@@ -14,14 +14,14 @@ namespace Hotelier.Api.Controllers;
 public class UserController : BaseController
 {
     [HttpGet]
-    public async Task<ActionResult<UserDto>> Get()
+    public async Task<ActionResult<UserDto>> Get([FromQuery]GetUserQuery query)
     {
-        return Ok(await Mediator.Send(new GetUserQuery()));
+        return Ok(await Mediator.Send(query));
     }
     
     [HttpGet]
     [Route("List")]
-    public async Task<ActionResult<UserDto>> GetList([FromQuery]GetUsersQuery query)
+    public async Task<ActionResult<GetUsersVm>> GetList([FromQuery]GetUsersQuery query)
     {
         return Ok(await Mediator.Send(query));
     }

@@ -1,5 +1,131 @@
+@using Hotelier.Application.Staffs.Queries.Dtos
+@model Hotelier.Application.Staffs.Queries.GetStaffs.GetStaffsVm
+
 @{
     ViewData["Title"] = "Personeller";
 }
 
-<h1>Personel sayfası</h1>
+<h2 class="text-center">Personeller Sayfası</h2><hr>
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Liste</h4>
+            <div class="d-sm-flex justify-content-between align-items-start">
+                <p class="card-description">
+                    Bu sayfada <code>personelleri</code> listeleyip işlem seçebilirsiniz.
+                </p>
+                <div>
+                    <a asp-controller="Staff" asp-action="Add"
+                       class="btn btn-success btn-md text-white fw-bold mb-0 me-0" type="button">
+                        <i class="mdi mdi-account-plus"></i>&nbsp;&nbsp;Yeni Personel
+                    </a>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Fotoğraf
+                        </th>
+                        <th>
+                            Ad Soyad
+                        </th>
+                        <th>
+                            Unvan
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @if (Model != null && Model.Staffs != null && Model.Staffs.Count > 0)
+                    {
+                        @foreach (StaffDto staff in Model.Staffs)
+                        {
+                            <tr>
+                                <td>
+                                    @staff.Id
+                                </td>
+                                <td class="py-1">
+                                    <img src="@staff.Image" alt="image"/>
+                                </td>
+                                <td>
+                                    @staff.Name
+                                </td>
+                                <td>
+                                    @staff.Title
+                                </td>
+                                <td>
+                                    <ul class="navbar-nav ms-auto">
+                                        <li class="nav-item dropdown d-none d-lg-block">
+                                            <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false"> İşlemler </a>
+                                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
+                                                <a class="dropdown-item preview-item" asp-controller="Staff" asp-action="Detail" asp-route-id="@staff.Id">
+                                                    <div class="preview-item-content flex-grow py-2">
+                                                        <p class="preview-subject ellipsis font-weight-medium text-dark">Detay </p>
+                                                        <p class="fw-light small-text mb-0">Personelin detay bilgilerini görüntüleyebilirsiniz.</p>
+                                                    </div>
+                                                </a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item preview-item" asp-controller="Staff" asp-action="Update" asp-route-id="@staff.Id">
+                                                    <div class="preview-item-content flex-grow py-2">
+                                                        <p class="preview-subject ellipsis font-weight-medium text-dark">Güncelle </p>
+                                                        <p class="fw-light small-text mb-0">Personelin bilgilerini güncelleyebilirsiniz.</p>
+                                                    </div>
+                                                </a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item preview-item" asp-controller="Staff" asp-action="Delete" asp-route-id="@staff.Id">
+                                                    <div class="preview-item-content flex-grow py-2">
+                                                        <p class="preview-subject ellipsis font-weight-medium text-dark">Sil </p>
+                                                        <p class="fw-light small-text mb-0">Bu personeli silebilirsiniz.</p>
+                                                    </div>
+                                                </a>
+                                                <a class="dropdown-item preview-item" asp-controller="User" asp-action="Detail" asp-route-id="@staff.CreatedBy">
+                                                    <div class="preview-item-content flex-grow py-2">
+                                                        <p class="preview-subject ellipsis font-weight-medium text-dark">Ekleyen </p>
+                                                        <p class="fw-light small-text mb-0">Bu personeli ekleyen kullanıcıyı görüntüleyebilirsiniz.</p>
+                                                    </div>
+                                                </a>
+                                                @if (staff.UpdatedBy != null && staff.UpdatedBy > 0)
+                                                {
+                                                    <a class="dropdown-item preview-item" asp-controller="User" asp-action="Detail" asp-route-id="@staff.UpdatedBy">
+                                                        <div class="preview-item-content flex-grow py-2">
+                                                            <p class="preview-subject ellipsis font-weight-medium text-dark">Güncelleyen </p>
+                                                            <p class="fw-light small-text mb-0">Bu personeli güncelleyen kullanıcıyı görüntüleyebilirsiniz.</p>
+                                                        </div>
+                                                    </a>
+                                                }
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    </tbody>
+                </table>
+            </div>
+
+            @if (Model != null)
+            {
+                @await Component.InvokeAsync("PaginationResponse", new
+                       {
+                           model = new PaginationResponseModel
+                           {
+                               ControllerName = "Staff",
+                               CurrentPage = Model.CurrentPage,
+                               Next = Model.Next,
+                               Previous = Model.Previous,
+                               PageCount = Model.PageCount
+                           }
+                       })
+            }
+        </div>
+    </div>
+</div>

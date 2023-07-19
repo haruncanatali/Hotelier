@@ -38,7 +38,7 @@ public class TokenManager
 
         SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_tokenSetting.Key));
         SigningCredentials credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-        DateTime tokenExpire = DateTime.Now.AddMinutes(_tokenSetting.TokenValidityTime);
+        DateTime tokenExpire = DateTime.Now.AddHours(_tokenSetting.TokenValidityTime);
 
         JwtSecurityToken token = new JwtSecurityToken(
             _tokenSetting.Issuer,
@@ -58,7 +58,10 @@ public class TokenManager
             {
                 Email = appUser.Email,
                 Id = appUser.Id,
-                Role = responseRole
+                Role = responseRole,
+                Firstname = appUser.FirstName,
+                LastName = appUser.LastName,
+                Photo = appUser.ProfilePhoto
             },
             AccessToken = new JwtSecurityTokenHandler().WriteToken(token),
             RefreshToken = refreshToken

@@ -5,5 +5,5 @@ namespace Hotelier.Application.Users.Queries.GetUser;
 
 public class GetUserQuery : IRequest<UserDto>
 {
-    
+    public long Id { get; set; }
 }

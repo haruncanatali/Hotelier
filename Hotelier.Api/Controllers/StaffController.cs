@@ -17,7 +17,7 @@ public class StaffController : BaseController
     }
     
     [HttpGet]
-    public async Task<ActionResult<List<StaffDto>>> GetList([FromQuery] GetStaffsQuery query)
+    public async Task<ActionResult<GetStaffsVm>> GetList([FromQuery] GetStaffsQuery query)
     {
         return Ok(await Mediator.Send(query));
     }

@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Hotelier.Application.Staffs.Queries.GetStaffs;
 
-public class GetStaffsQuery : IRequest<List<StaffDto>>
+public class GetStaffsQuery : IRequest<GetStaffsVm>
 {
     public int Page { get; set; }
     public int PageSize { get; set; }

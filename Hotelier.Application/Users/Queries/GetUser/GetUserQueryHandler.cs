@@ -10,13 +10,11 @@ namespace Hotelier.Application.Users.Queries.GetUser;
 public class GetUserQueryHandler : IRequestHandler<GetUserQuery,UserDto>
 {
     private readonly UserManager<User> _userManager;
-    private readonly ICurrentUserService _currentUserService;
     private readonly IMapper _mapper;
 
-    public GetUserQueryHandler(UserManager<User> userManager, ICurrentUserService currentUserService, IMapper mapper)
+    public GetUserQueryHandler(UserManager<User> userManager, IMapper mapper)
     {
         _userManager = userManager;
-        _currentUserService = currentUserService;
         _mapper = mapper;
     }
 
@@ -24,7 +22,7 @@ public class GetUserQueryHandler : IRequestHandler<GetUserQuery,UserDto>
     {
         UserDto result = null;
 
-        User? user = await _userManager.FindByIdAsync(_currentUserService.UserId.ToString());
+        User? user = await _userManager.FindByIdAsync(request.Id.ToString());
 
         if (user != null)
         {

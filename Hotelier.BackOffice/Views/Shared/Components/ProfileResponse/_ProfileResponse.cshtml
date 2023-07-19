@@ -1,0 +1,18 @@
+@model ProfileResponseModel
+
+<li class="nav-item dropdown d-none d-lg-block user-dropdown">
+    <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+        <img class="img-xs rounded-circle" src="@Model.Photo" alt="Profile image">
+    </a>
+    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+        <div class="dropdown-header text-center">
+            <img class="img-md rounded-circle" src="@Model.Photo" alt="Profile image" width="80" height="80">
+            <p class="mb-1 mt-3 font-weight-semibold">@Model.FirstName @Model.LastName</p>
+            <p class="fw-light text-muted mb-0">@Model.Mail</p>
+        </div>
+        <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Profilim</a>
+        <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i> Mesajlar</a>
+        <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i> Aktiviteler</a>
+        <a class="dropdown-item" asp-controller="Auth" asp-action="SignOut"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Çıkış Yap</a>
+    </div>
+</li>

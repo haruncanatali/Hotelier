@@ -17,6 +17,7 @@ public static class SettingsConfig
 
         services.Configure<TokenSetting>(configuration.GetSection("TokenSetting"));
         services.Configure<ImageSetting>(configuration.GetSection("ImageSetting"));
+        services.Configure<UrlSetting>(configuration.GetSection("UrlSetting"));
         services.AddTransient<TokenManager>();
         return services;
     }

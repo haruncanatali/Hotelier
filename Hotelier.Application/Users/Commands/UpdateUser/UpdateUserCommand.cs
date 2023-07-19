@@ -11,6 +11,7 @@ namespace Hotelier.Application.Users.Commands.UpdateUser;
 
 public class UpdateUserCommand : IRequest<UserDto>
 {
+    public long Id { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public IFormFile? ProfilePhoto { get; set; }
@@ -35,7 +36,7 @@ public class UpdateUserCommand : IRequest<UserDto>
         {
             UserDto result = null;
 
-            User? user = await _userManager.FindByIdAsync(_currentUserService.UserId.ToString());
+            User? user = await _userManager.FindByIdAsync(request.Id.ToString());
 
             if (user != null)
             {

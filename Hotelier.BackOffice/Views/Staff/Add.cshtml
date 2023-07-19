@@ -1,0 +1,62 @@
+@model Hotelier.BackOffice.Models.Staff.StaffAddRequestModel
+
+@{
+    ViewData["Title"] = "Personel Ekleme Sayfası";
+}
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Personel Ekleme Sayfası</h4>
+            <p class="card-description">
+                Bu sayfada personel ekleme yapabilirsiniz.
+            </p>
+            <form class="forms-sample" asp-controller="Staff" asp-action="Add" method="post" enctype="multipart/form-data">
+                <div class="form-group row">
+                    <label asp-for="Name" class="col-sm-3 col-form-label">Ad Soyad</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" asp-for="Name">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Title" class="col-sm-3 col-form-label">Unvan</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" asp-for="Title">
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="SocialMediaFacebook" class="col-sm-3 col-form-label">Facebook Bağlantısı</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" asp-for="SocialMediaFacebook">
+                        <span asp-validation-for="SocialMediaFacebook" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="SocialMediaInstagram" class="col-sm-3 col-form-label">Instagram Bağlantısı</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" asp-for="SocialMediaInstagram">
+                        <span asp-validation-for="SocialMediaInstagram" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="SocialMediaTwitter" class="col-sm-3 col-form-label">Twitter Bağlantısı</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" asp-for="SocialMediaTwitter">
+                        <span asp-validation-for="SocialMediaTwitter" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Image" class="col-sm-3 col-form-label">Fotoğraf</label>
+                    <div class="col-sm-9">
+                        <input type="file" class="form-control" asp-for="Image">
+                        <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary me-2">Ekle</button>
+                <a class="btn btn-light" asp-controller="Staff" asp-action="Index">İptal</a>
+            </form>
+        </div>
+    </div>
+</div>

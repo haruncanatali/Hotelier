@@ -1,11 +1,17 @@
+using Hotelier.Application.Common.Models;
+using Hotelier.BackOffice.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
+builder.Services.Configure<UrlSetting>(builder.Configuration.GetSection("UrlSetting"));
+builder.Services.AddTransient<RequestHelper>();
+
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(opt => { opt.LoginPath = "/Auth/Index/"; });
+    .AddCookie(opt => { opt.LoginPath = "/Auth/Index"; });
 
 builder.Services.ConfigureApplicationCookie(options =>
 {

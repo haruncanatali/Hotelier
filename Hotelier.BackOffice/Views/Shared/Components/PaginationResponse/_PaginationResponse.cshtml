@@ -1,0 +1,52 @@
+@model PaginationResponseModel
+
+@if (Model != null)
+{
+    <nav aria-label="Page navigation example" style="margin-top: 10px;">
+        <ul class="pagination justify-content-end">
+            @if (Model.Previous)
+            {
+                int previousPage = Model.CurrentPage - 1;
+                <li class="page-item">
+                    <a class="page-link" asp-controller="@Model.ControllerName" asp-action="Index" asp-route-page="@previousPage">Geri</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item disabled">
+                    <a class="page-link">Geri</a>
+                </li>
+            }
+
+            @for (int i = 1; i <= Model.PageCount; i++)
+            {
+                if (Model.CurrentPage == i)
+                {
+                    <li class="page-item active">
+                        <a class="page-link" asp-controller="@Model.ControllerName" asp-action="Index" asp-route-page="@i">@i</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-controller="@Model.ControllerName" asp-action="Index" asp-route-page="@i">@i</a>
+                    </li>
+                }
+            }
+
+            @if (Model.Next)
+            {
+                int nextPage = Model.CurrentPage + 1;
+                <li class="page-item">
+                    <a class="page-link" asp-controller="@Model.ControllerName" asp-action="Index" asp-route-page="@nextPage">İleri</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item disabled">
+                    <a class="page-link">İleri</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}

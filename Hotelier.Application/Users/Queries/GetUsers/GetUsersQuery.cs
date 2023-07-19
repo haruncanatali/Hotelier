@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Hotelier.Application.Users.Queries.GetUsers;
 
-public class GetUsersQuery : IRequest<List<UserDto>>
+public class GetUsersQuery : IRequest<GetUsersVm>
 {
     public int Page { get; set; }
     public int PageSize { get; set; }

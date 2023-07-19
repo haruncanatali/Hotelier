@@ -1,0 +1,55 @@
+@model Hotelier.BackOffice.Models.User.UserUpdateRequestModel
+
+@{
+    ViewData["Title"] = "Kullanıcı Güncelleme Sayfası";
+}
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Kullanıcı Güncelleme Sayfası</h4>
+            <p class="card-description">
+                Bu sayfada kullanıcı güncelleme yapabilirsiniz.
+            </p>
+            <form class="forms-sample" asp-controller="User" asp-action="Update" method="post" enctype="multipart/form-data">
+                <input type="number" asp-for="Id" hidden="hidden"/>
+                <div class="form-group row">
+                    <label asp-for="FirstName" class="col-sm-3 col-form-label">Ad</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" asp-for="FirstName">
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="LastName" class="col-sm-3 col-form-label">Soyad</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" asp-for="LastName">
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Birthdate" class="col-sm-3 col-form-label">Doğum Tarihi</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" asp-for="Birthdate">
+                        <span asp-validation-for="Birthdate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="ProfilePhoto" class="col-sm-3 col-form-label">Fotoğraf</label>
+                    <div class="col-sm-9">
+                        <input type="file" class="form-control" asp-for="ProfilePhoto">
+                        @if (ViewBag.hasProfilePhoto != null && ViewBag.hasProfilePhoto)
+                        {
+                            <span class="text-dark">
+                                *Mevcutta fotoğraf tanımlıdır. Boş bırakırsanız eski fotoğraf tanımlı olacaktır.
+                            </span>
+                        }
+                        <span asp-validation-for="ProfilePhoto" class="text-danger"></span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary me-2">Güncelle</button>
+                <a class="btn btn-light" asp-controller="User" asp-action="Index">İptal</a>
+            </form>
+        </div>
+    </div>
+</div>
