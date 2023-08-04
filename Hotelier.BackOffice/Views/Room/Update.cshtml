@@ -1,0 +1,83 @@
+@model Hotelier.BackOffice.Models.Room.RoomUpdateRequestModel
+
+@{
+    ViewData["Title"] = "Oda Güncelleme Sayfası";
+}
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Oda Güncelleme Sayfası</h4>
+            <p class="card-description">
+                Bu sayfada oda güncelleme yapabilirsiniz.
+            </p>
+            <form class="forms-sample" asp-controller="Room" asp-action="Update" method="post" enctype="multipart/form-data">
+                <input type="number" asp-for="Id" hidden="hidden"/>
+                <div class="form-group row">
+                    <label asp-for="Title" class="col-sm-3 col-form-label">Başlık</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" asp-for="Title">
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="RoomNumber" class="col-sm-3 col-form-label">Oda Numarası</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" asp-for="RoomNumber">
+                        <span asp-validation-for="RoomNumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Description" class="col-sm-3 col-form-label">Açıklama</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" asp-for="Description">
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="Title" class="col-sm-3 col-form-label">Fiyat</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" asp-for="Price">
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="BedCount" class="col-sm-3 col-form-label">Yatak Sayısı</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" asp-for="BedCount">
+                        <span asp-validation-for="BedCount" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="BathCount" class="col-sm-3 col-form-label">Banyo Sayısı</label>
+                    <div class="col-sm-9">
+                        <input type="number" class="form-control" asp-for="BathCount">
+                        <span asp-validation-for="BathCount" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="WiFi" class="col-sm-3 col-form-label">WiFi</label>
+                    <div class="col-sm-9">
+                        <input type="checkbox" class="form-check-input" asp-for="WiFi" value="true">
+                        <span asp-validation-for="WiFi" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label asp-for="CoverImage" class="col-sm-3 col-form-label">Fotoğraf</label>
+                    <div class="col-sm-9">
+                        <input type="file" class="form-control" asp-for="CoverImage" style="height: 44px;">
+                        @if (ViewBag.hasCoverImage != null && ViewBag.hasCoverImage)
+                        {
+                            <span class="text-dark">
+                                *Mevcutta fotoğraf tanımlıdır. Boş bırakırsanız eski fotoğraf tanımlı olacaktır.
+                            </span>
+                        }
+                        <span asp-validation-for="CoverImage" class="text-danger"></span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary me-2">Güncelle</button>
+                <a class="btn btn-light" asp-controller="Room" asp-action="Index">İptal</a>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,3 +1,4 @@
+using System.Globalization;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Hotelier.Application.Common.Interfaces;
@@ -7,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hotelier.Application.Testimonials.Queries.GetTestimonials;
 
-public class GetTestimonialsQueryHandler : IRequestHandler<GetTestimonialsQuery,List<TestimonialDto>>
+public class GetTestimonialsQueryHandler : IRequestHandler<GetTestimonialsQuery,GetTestimonialsVm>
 {
     private readonly IApplicationContext _context;
     private readonly IMapper _mapper;
@@ -18,8 +19,12 @@ public class GetTestimonialsQueryHandler : IRequestHandler<GetTestimonialsQuery,
         _mapper = mapper;
     }
 
-    public async Task<List<TestimonialDto>> Handle(GetTestimonialsQuery request, CancellationToken cancellationToken)
+    public async Task<GetTestimonialsVm> Handle(GetTestimonialsQuery request, CancellationToken cancellationToken)
     {
+        int count = await _context.Testimonials.CountAsync(cancellationToken);
+
+        double pageCount = Math.Ceiling((double)count / (double)request.PageSize);
+
         List<TestimonialDto>? result = await _context.Testimonials
             .Where(c =>
                 (request.Description == null || c.Description.ToLower().Contains(request.Description.ToLower()) &&
@@ -28,7 +33,14 @@ public class GetTestimonialsQueryHandler : IRequestHandler<GetTestimonialsQuery,
             .OrderByDescending(c=>c.CreatedAt)
             .ProjectTo<TestimonialDto>(_mapper.ConfigurationProvider)
             .ToListAsync(cancellationToken);
-
-        return result;
+        
+        return new GetTestimonialsVm
+        {
+            Testimonials = result,
+            CurrentPage = request.Page,
+            Next = request.Page < pageCount,
+            Previous = request.Page>1,
+            PageCount = int.Parse(pageCount.ToString(CultureInfo.InvariantCulture))
+        };
     }
 }

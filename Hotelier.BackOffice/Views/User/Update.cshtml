@@ -37,7 +37,7 @@
                 <div class="form-group row">
                     <label asp-for="ProfilePhoto" class="col-sm-3 col-form-label">Fotoğraf</label>
                     <div class="col-sm-9">
-                        <input type="file" class="form-control" asp-for="ProfilePhoto">
+                        <input type="file" class="form-control" asp-for="ProfilePhoto" style="height: 44px;">
                         @if (ViewBag.hasProfilePhoto != null && ViewBag.hasProfilePhoto)
                         {
                             <span class="text-dark">

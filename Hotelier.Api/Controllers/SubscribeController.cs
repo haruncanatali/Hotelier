@@ -17,7 +17,7 @@ public class SubscribeController : BaseController
     }
     
     [HttpGet]
-    public async Task<ActionResult<List<SubscribeDto>>> GetList([FromQuery] GetSubscribesQuery query)
+    public async Task<ActionResult<GetSubscribesVm>> GetList([FromQuery] GetSubscribesQuery query)
     {
         return Ok(await Mediator.Send(query));
     }

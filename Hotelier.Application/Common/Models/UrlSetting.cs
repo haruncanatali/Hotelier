@@ -10,4 +10,12 @@ public class UrlSetting
     public string UserPath { get; set; }
 
     public string StaffPath { get; set; }
+
+    public string RoomPath { get; set; }
+
+    public string SubscribePath { get; set; }
+
+    public string TestimonialPath { get; set; }
+
+    public string ServicePath { get; set; }
 }

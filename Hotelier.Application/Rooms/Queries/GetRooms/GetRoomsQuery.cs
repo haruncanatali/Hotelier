@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Hotelier.Application.Rooms.Queries.GetRooms;
 
-public class GetRoomsQuery : IRequest<List<RoomDto>>
+public class GetRoomsQuery : IRequest<GetRoomsVm>
 {
     public int Page { get; set; }
     public int PageSize { get; set; }

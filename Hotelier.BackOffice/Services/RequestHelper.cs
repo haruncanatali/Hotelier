@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using Hotelier.Application.Auth.Queries.Dtos;
@@ -135,7 +136,12 @@ public class RequestHelper
                 _httpContextAccessor.HttpContext.User.FindFirstValue("AccessToken"));
             
             response = await client.GetAsync(uriBuilder.Uri);
-            
+
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                _httpContextAccessor.HttpContext.Response.Redirect("/Auth/Index");
+            }
+
             if (response.IsSuccessStatusCode)
             {
                 string body = await response.Content.ReadAsStringAsync();
@@ -199,13 +205,22 @@ public class RequestHelper
 
                     if (type == RequestType.Post)
                     {
-                        await client.PostAsync(Debugger.IsAttached ? _urlSetting.LocalKey + url
+                        var result = await client.PostAsync(Debugger.IsAttached ? _urlSetting.LocalKey + url
                             : _urlSetting.HostKey + url, content);
+                        
+                        if (result.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            _httpContextAccessor.HttpContext.Response.Redirect("/Auth/Index");
+                        }
                     }
                     else
                     {
                         var result = await client.PutAsync(Debugger.IsAttached ? _urlSetting.LocalKey + url 
                             : _urlSetting.HostKey + url, content);
+                        if (result.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            _httpContextAccessor.HttpContext.Response.Redirect("/Auth/Index");
+                        }
                     }
                 }
                 else
@@ -218,13 +233,23 @@ public class RequestHelper
                     
                     if (type == RequestType.Post)
                     {
-                        await client.PostAsync(Debugger.IsAttached ? _urlSetting.LocalKey + url 
+                        var result = await client.PostAsync(Debugger.IsAttached ? _urlSetting.LocalKey + url 
                             : _urlSetting.HostKey + url, content);
+                        
+                        if (result.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            _httpContextAccessor.HttpContext.Response.Redirect("/Auth/Index");
+                        }
                     }
                     else
                     {
-                        await client.PutAsync(Debugger.IsAttached ? _urlSetting.LocalKey + url 
+                        var result = await client.PutAsync(Debugger.IsAttached ? _urlSetting.LocalKey + url 
                             : _urlSetting.HostKey + url, content);
+                        
+                        if (result.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            _httpContextAccessor.HttpContext.Response.Redirect("/Auth/Index");
+                        }
                     }
                 }
             }
@@ -247,6 +272,11 @@ public class RequestHelper
             );
             
             HttpResponseMessage api_response = await client.GetAsync(uriBuilder.Uri);
+            
+            if (api_response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                _httpContextAccessor.HttpContext.Response.Redirect("/Auth/Index");
+            }
             
             if (api_response.IsSuccessStatusCode)
             {
@@ -272,7 +302,12 @@ public class RequestHelper
                     : _urlSetting.HostKey + url + $"/{id}"
             );
             
-            await client.DeleteAsync(uriBuilder.Uri);
+            var result = await client.DeleteAsync(uriBuilder.Uri);
+            
+            if (result.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                _httpContextAccessor.HttpContext.Response.Redirect("/Auth/Index");
+            }
         }
     }
 

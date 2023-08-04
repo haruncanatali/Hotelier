@@ -1,5 +1,89 @@
+@model Hotelier.Application.Subscribes.Queries.GetSubscribes.GetSubscribesVm
+@using Hotelier.Application.Subscribes.Queries.Dtos
 @{
     ViewData["Title"] = "Aboneler";
 }
 
-<h1>Aboneler sayfası</h1>
+<h2 class="text-center">Aboneler Sayfası</h2><hr>
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Liste</h4>
+            <div class="d-sm-flex justify-content-between align-items-start">
+                <p class="card-description">
+                    Bu sayfada <code>aboneleri</code> listeleyip işlem seçebilirsiniz.
+                </p>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>
+                            Id
+                        </th>
+                        <th>
+                            Mail
+                        </th>
+                        <th>
+                            Eklenme Tarihi
+                        </th>
+                        <th>
+                            
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @if (Model != null &&Model.Subscribes is {Count: > 0 })
+                    {
+                        @foreach (SubscribeDto subscribe in Model.Subscribes)
+                        {
+                            <tr>
+                                <td>
+                                    @subscribe.Id
+                                </td>
+                                <td>
+                                    @subscribe.Mail
+                                </td>
+                                <td>
+                                    @subscribe.CreatedAt
+                                </td>
+                                <td>
+                                    <ul class="navbar-nav ms-auto">
+                                        <li class="nav-item dropdown d-none d-lg-block">
+                                            <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false"> İşlemler </a>
+                                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
+                                                <a class="dropdown-item preview-item" asp-controller="Subscribe" asp-action="Delete" asp-route-id="@subscribe.Id">
+                                                    <div class="preview-item-content flex-grow py-2">
+                                                        <p class="preview-subject ellipsis font-weight-medium text-dark">Sil </p>
+                                                        <p class="fw-light small-text mb-0">Bu aboneyi silebilirsiniz.</p>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    </tbody>
+                </table>
+            </div>
+
+            @if (Model != null)
+            {
+                @await Component.InvokeAsync("PaginationResponse", new
+                       {
+                           model = new PaginationResponseModel
+                           {
+                               ControllerName = "Subscribe",
+                               CurrentPage = Model.CurrentPage,
+                               Next = Model.Next,
+                               Previous = Model.Previous,
+                               PageCount = Model.PageCount
+                           }
+                       })
+            }
+        </div>
+    </div>
+</div>

@@ -17,7 +17,7 @@ public class RoomController : BaseController
     }
     
     [HttpGet]
-    public async Task<ActionResult<List<RoomDto>>> GetList([FromQuery] GetRoomsQuery query)
+    public async Task<ActionResult<GetRoomsVm>> GetList([FromQuery] GetRoomsQuery query)
     {
         return Ok(await Mediator.Send(query));
     }
